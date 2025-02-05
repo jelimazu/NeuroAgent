@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solana NeuroAgent</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Manrope', sans-serif;
+    }
+
+    body {
+        background: #121212;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .button-container {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .button-container a {
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #A380FF;
+        border: 1px solid #9D39FF;
+        border-radius: 50px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(4px);
+        background: rgba(18, 18, 18, 0.7);
+    }
+
+    .button-container a:hover {
+        background: rgba(0, 255, 255, 0.1);
+        transform: translateY(-1px);
+    }
+
+    #header {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #9D39FF, #A380FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+    }
+
+    #legend {
+        text-align: center;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        max-width: 700px;
+        margin-bottom: 3rem;
+        line-height: 1.6;
+    }
+
+    #chat-container {
+        width: 100%;
+        max-width: 800px;
+        background: rgba(26, 26, 26, 0.8);
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+
+    #chat-box {
+        height: 60vh;
+        padding: 2rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .message {
+        margin: 0;
+        padding: 1rem 1.5rem;
+        border-radius: 15px;
+        max-width: 75%;
+        position: relative;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        animation: messageAppear 0.3s ease-out;
+    }
+
+    .user-message {
+        background: linear-gradient(135deg, #9D39FF, #A380FF);
+        border: 1px solid rgba(0, 255, 255, 0.2);
+        align-self: flex-end;
+        border-radius: 15px 15px 3px 15px;
+    }
+
+    .bot-message {
+        background: rgba(40, 40, 40, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        align-self: flex-start;
+        border-radius: 15px 15px 15px 3px;
+    }
+
+    #chat-form {
+        display: flex;
+        padding: 1.5rem;
+        background: rgba(30, 30, 30, 0.8);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #chat-input {
+        flex: 1;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        background: rgba(50, 50, 50, 0.4);
+        color: #fff;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    #chat-input:focus {
+        background: rgba(60, 60, 60, 0.6);
+        box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.3);
+    }
+
+    #send-button {
+        border: none;
+        background: linear-gradient(135deg, #9D39FF, #A380FF);
+        color: #121212;
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-left: 1rem;
+        font-weight: 600;
+    }
+
+    #send-button:hover {
+        opacity: 0.9;
+        transform: scale(0.98);
+    }
+
+    @keyframes messageAppear {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes backgroundPulse {
+        0% { opacity: 0.5; }
+        100% { opacity: 0.8; }
+    }
+	
+	    /* Сохраняем оригинальный фон */
+    .background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.2), transparent),
+                    radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.2), transparent);
+        animation: backgroundPulse 6s infinite alternate;
+        z-index: -1;
+    }
+
+
+</style>
+</head>
+<body>
+  <div class="background-overlay"></div>
+  
+  <div class="button-container">
+    <a href="https://twitter.com/solana" target="_blank">X</a>
+    <a href="https://pump.fun" target="_blank">Pump.fun</a>
+	<a href="https://pump.fun" target="_blank">Github</a>
+  </div>
+  
+  <div id="header">Solana NeuroAgent</div>
+  <div id="legend">An AI-driven entity in the Solana blockchain, analyzing trends, forecasting opportunities, and guiding users in the decentralized ecosystem.</div>
+  
+  <div id="chat-container">
+    <div id="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" required />
+      <button type="submit" id="send-button">🤖</button>
+    </form>
+  </div>
+  
+  <script type="module" src="./src/index.js"></script>
+</body>
+</html>

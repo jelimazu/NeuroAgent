@@ -1,0 +1,14 @@
+{
+  "name": "chatbot-no-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "gpt4js": "^версия"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}
