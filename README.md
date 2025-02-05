@@ -11,13 +11,13 @@ Solana NeuroAgent is a decentralized, Web3-native AI assistant designed to inter
 
 ## 📸 Screenshots
 
-![Preview](https://YOUR_USERNAME.github.io/YOUR_REPO/screenshot.png)
+![Preview](https://i.imgur.com/3eu77eY.png)
 
 ## 🔧 Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/jelimazu/NeuroAgent
+cd NeuroAgent
 npm install
