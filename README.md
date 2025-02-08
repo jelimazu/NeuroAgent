@@ -1,6 +1,6 @@
-# 🚀 Neural Finance Ledger – AI-Powered Chatbot on Solana Blockchain
+# 🚀 Kanye West – AI-Powered Chatbot on YE Blockchain
 
-Solana NeuroAgent is a decentralized, Web3-native AI assistant designed to interact within the Solana blockchain ecosystem. The bot provides real-time AI-driven responses, crypto-related insights, and smart automation – all without centralized servers.
+Kanye West AI is a decentralized, Web3-native AI assistant designed to interact within the YE blockchain ecosystem. The bot provides real-time AI-driven responses, crypto-related insights, and smart automation – all without centralized servers.
 
 ## 🌟 Features
 
@@ -11,7 +11,7 @@ Solana NeuroAgent is a decentralized, Web3-native AI assistant designed to inter
 
 ## 📸 Screenshots
 
-![Preview](https://i.imgur.com/DzJVZLs.png)
+![Preview](https://i.imgur.com/OrRRII2.png)
 
 ## 🔧 Installation
 
